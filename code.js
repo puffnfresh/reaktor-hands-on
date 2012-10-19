@@ -43,28 +43,28 @@ _.sequence(_.io, [
     check(
         'palindrome string is palindrome',
         function(s) {
-            return true; //throw new Error("TODO");
+            throw new Error("TODO");
         },
         [String]
     ),
     check(
         'not palindrome string is not palindrome',
         function(s) {
-            return true; //throw new Error("TODO");
+            throw new Error("TODO");
         },
         [String]
     ),
     check(
         'palindrome array is palindrome',
         function(a) {
-            return true; //throw new Error("TODO");
+            throw new Error("TODO");
         },
         [Array]
     ),
     check(
         'not palindrome array is not palindrome',
         function(a) {
-            return true; //throw new Error("TODO");
+            throw new Error("TODO");
         },
         [Array]
     )
