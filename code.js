@@ -41,17 +41,7 @@ function cons(value, tail) {
     };
 
     this.equals = function(list) {
-        return this.fold(function(a, v) {
-            return {
-                accum: a.accum && a.list.head.map(function(x) {
-                    return v == x;
-                }).getOrElse(false),
-                list: a.list.tail.getOrElse(nil)
-            };
-        }, {
-            accum: true,
-            list: list
-        }).accum;
+        return this.head.map(_.strictEquals(value)).getOrElse(false) && list.equals(list.tail.getOrElse(nil));
     };
 
     this.reverse = function() {
