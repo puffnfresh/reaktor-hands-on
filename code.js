@@ -89,7 +89,17 @@ _ = _.method('arb', isListOf, function(listOf, size) {
 
 var code = _.environment()
     .method('isPalindrome', _.isArray, function(a) {
-        return a == a.reverse();
+        var x = 0,
+            y = a.length - 1,
+            accum = true;
+
+        while(x < y) {
+            accum = accum && a[x] == a[y];
+            x++;
+            y--;
+        }
+
+        return accum;
     })
     .method('isPalindrome', _.isString, function(s) {
         return s == s.split('').reverse().join('');
@@ -147,15 +157,15 @@ _.sequence(_.io, [
     check(
         'palindrome array is palindrome',
         function(a) {
-            return code.isPalindrome(a.concat(a.reverse()));
+            return code.isPalindrome(a.concat(a.slice().reverse()));
         },
         [Array]
-    )/*,
+    ),
     check(
         'not palindrome array is not palindrome',
         function(a) {
             return !code.isPalindrome([1].concat(a).concat(2));
         },
         [Array]
-    )*/
+    )
 ]).perform();
