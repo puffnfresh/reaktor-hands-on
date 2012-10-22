@@ -89,17 +89,7 @@ _ = _.method('arb', isListOf, function(listOf, size) {
 
 var code = _.environment()
     .method('isPalindrome', _.isArray, function(a) {
-        var x = 0,
-            y = a.length - 1,
-            accum = true;
-
-        while(x < y) {
-            accum = accum && a[x] == a[y];
-            x++;
-            y--;
-        }
-
-        return accum;
+        return _.equal(a, a.slice().reverse());
     })
     .method('isPalindrome', _.isString, function(s) {
         return s == s.split('').reverse().join('');
